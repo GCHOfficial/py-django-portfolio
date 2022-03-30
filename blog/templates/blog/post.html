@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Work - George-Cosmin Hanta</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    <noscript>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" />
+    </noscript>
+  </head>
+
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <a href="/home" class="logo">George-Cosmin Hanta</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="/home">About</a></li>
+          <li class="active"><a href="/work">Work</a></li>
+        </ul>
+        <ul class="icons">
+          <li>
+            <a
+              href="https://www.linkedin.com/in/gchofficial/"
+              class="icon brands fa-linkedin"
+              target="_blank"
+              ><span class="label">Linkedin</span></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/GCHOfficial/"
+              class="icon brands fa-github"
+              target="_blank"
+              ><span class="label">GitHub</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Post -->
+        <section class="post">
+          <header class="major">
+            <span class="date">{{ post.date_added }}</span>
+            <h1>{{ post.title }}<br /></h1>
+            <p>{{ post.intro }}</p>
+          </header>
+          <div class="image fit">{{ post.image_url|safe }}</div>
+          <p>{{ post.body|safe }}</p>
+          <br />
+          <h3>Questions</h3>
+          <dl>
+            {% for comment in post.comments.all %}
+            <dt>
+              Question by {{ comment.name }}, {{ comment.date_added|timesince }}
+              ago
+            </dt>
+            <dd>{{ comment.message|safe }}</dd>
+            {% empty %}
+            <p>No questions yet...</p>
+            {% endfor %}
+          </dl>
+          <form method="post" action=".">
+            {% csrf_token %} {{ form.media }} {{ form.as_p }}
+            <ul class="actions">
+              <li><input type="submit" value="Add Question" /></li>
+            </ul>
+          </form>
+        </section>
+      </div>
+
+      <!-- Copyright -->
+      <div id="copyright">
+        <ul>
+          <li>&copy; George-Cosmin Hanta 2022</li>
+          <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    {% load static %}
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/util.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>
