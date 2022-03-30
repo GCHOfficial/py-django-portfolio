@@ -98,7 +98,12 @@
             <h1>{{ post.title }}<br /></h1>
             <p>{{ post.intro }}</p>
           </header>
-          <div class="image fit">{{ post.image_url|safe }}</div>
+          <div
+            class="image fit"
+            style="margin-left: auto; margin-right: auto; width: 50%"
+          >
+            {{ post.image_url|safe }}
+          </div>
           <p>{{ post.body|safe }}</p>
           <br />
           <h3>Questions</h3>
