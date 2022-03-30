@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-3j@h%c=ox3cr_#gcoy2s*xqafgwh#r0e3%^b+fyqo$v6wnr!k1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com"]
 
 
 # Application definition
@@ -79,16 +79,9 @@ WSGI_APPLICATION = "pydjangoportfolio.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "py_django_portfolio",
-        "USER": "pdj_portfolio",
-        "PASSWORD": "lol123!@#",
-        "HOST": "localhost",
-        "PORT": "",
-    }
-}
+# Heroku: Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES["default"].update(db_from_env)
 
 
 # Password validation
@@ -150,7 +143,3 @@ CKEDITOR_CONFIGS = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Heroku: Update database configuration from $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES["default"].update(db_from_env)
