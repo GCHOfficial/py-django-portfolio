@@ -115,7 +115,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+# Static and media storage
 USE_S3 = os.getenv("USE_S3") == "TRUE"
 
 if USE_S3:
@@ -142,6 +142,8 @@ else:
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
+# CKEditor configuration
+CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     "default": {
         "width": "auto",
