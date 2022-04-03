@@ -1,1 +1,1 @@
-web: gunicorn pydjangoportfolio.wsgi
+web: gunicorn --preload pydjangoportfolio.wsgi
